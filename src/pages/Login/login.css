@@ -1,0 +1,230 @@
+.login__main__container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+.left__container {
+  flex: 0.3;
+  background-color: #f2d184;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  padding: 3rem;
+  flex: 0.3;
+}
+.title {
+  font-family: "Kaushan Script", cursive;
+  color: #866118;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.text {
+  color: #866118;
+  line-height: 2.5rem;
+  font-size: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.artarea {
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+}
+.art__image {
+  flex: 0.9;
+  position: relative;
+  /* background-image: url("../../images/leftpart_bg.png");
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat; */
+}
+.left__bg__img {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.footer {
+  flex: 0.1;
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+}
+
+.right__container {
+  flex: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login__box {
+  height: 70%;
+  width: 40%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid pink;
+}
+.login__box form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 3rem 3rem;
+  width: 100%;
+}
+.login__box .header {
+  padding: 3rem 1rem 1rem 3rem;
+}
+.login__btn {
+  padding: 0.7rem 2.5rem;
+  color: #fff;
+  background-color: pink;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  outline: 0;
+  border: 0;
+  transition: 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: 0.3s ease-out;
+}
+.login__btn:hover {
+  opacity: 1.2;
+  border-color: #e4e4e4;
+  background-color: #ea4c89;
+}
+.input {
+  /* margin-bottom: 2rem; */
+  height: 3rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+  outline: 0;
+  border: 0;
+  background-color: #e4e4e4;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+
+.input:focus {
+  border-color: pink;
+}
+.input:hover {
+  border-color: pink;
+}
+::placeholder {
+  color: #000;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #000;
+}
+
+::-ms-input-placeholder {
+  color: #000;
+}
+label {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+@media only screen and (max-width: 991px) {
+  .left__container {
+    display: none;
+  }
+  .right__container {
+    flex: 1;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .header {
+    margin-right: 3rem;
+  }
+  .login__box {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header h2 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .login__box {
+    width: 90%;
+    height: 90%;
+  }
+  .header h2 {
+    font-size: 1.2rem;
+  }
+  .header {
+    padding-left: 1rem !important;
+  }
+  .input {
+    height: 2.7rem;
+    width: 100%;
+  }
+  .login__btn {
+    padding: 0.5rem 2rem;
+    align-self: center;
+    font-size: 0.7rem;
+  }
+  .firebase__error {
+    align-self: center;
+  }
+  .not__registered {
+    align-self: center;
+  }
+  .login__box form {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media only screen and (max-width: 991px) and (orientation: landscape) {
+  .login__box {
+    min-height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 7rem;
+    border-radius: 0;
+  }
+}
+.error {
+  color: red;
+  margin-bottom: 2rem;
+  margin-top: 0.3rem;
+}
+.firebase__error {
+  margin-top: 0.7rem;
+  color: red;
+}
+@media only screen and (max-height: 281px) and (orientation: landscape) {
+  .login__box {
+    padding-top: 12rem;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .not__registered {
+    display: flex;
+    flex-direction: column;
+  }
+  .not__registered a {
+    margin-left: 0rem !important;
+  }
+}
+.not__registered {
+  margin-top: 0.5rem;
+}
+.not__registered a {
+  margin-left: 0.7rem;
+  font-weight: bold;
+}
