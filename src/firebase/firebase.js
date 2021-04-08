@@ -1,5 +1,7 @@
 import firebase from "firebase/app";
+// eslint-disable-next-line
 import firestore from "firebase/firestore";
+// eslint-disable-next-line
 import auth from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCIJFuakOCL873QpUpfphg_5FvnkJPSRHU",

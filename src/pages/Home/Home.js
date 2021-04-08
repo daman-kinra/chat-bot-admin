@@ -1,7 +1,8 @@
 import React from "react";
 import app from "../../firebase/firebase";
-import styled from "styled-components";
-function Home() {
+import "./home.css";
+function Home(props) {
+  console.log(props.user);
   const logout = () => {
     app.auth().signOut();
   };
