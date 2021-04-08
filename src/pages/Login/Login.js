@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import app from "../../firebase/firebase";
 import styled from "styled-components";
 import HashLoader from "react-spinners/HashLoader";
@@ -24,10 +24,12 @@ function Login() {
     }
     if (!validateEmail(email.toLowerCase().trim())) {
       setError("invalid");
+
       return;
     }
     if (password === "") {
       setError("password");
+
       return;
     }
     setLoading(true);
@@ -39,10 +41,15 @@ function Login() {
       })
       .catch((err) => {
         setErrorFromFirebse(err.code);
-        console.log(err);
         setLoading(false);
       });
   };
+  useEffect(() => {
+    const errorText = document.getElementById("scrollIntoView");
+    if (errorText) {
+      errorText.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [error, loading]);
   return (
     <>
       {loading ? (
@@ -91,7 +98,9 @@ function Login() {
                   }}
                 />
                 {error === "email" || error === "invalid" ? (
-                  <span className="error">* Invalid Email</span>
+                  <span className="error" id="scrollIntoView">
+                    * Invalid Email
+                  </span>
                 ) : (
                   <span className="error"></span>
                 )}
@@ -109,14 +118,18 @@ function Login() {
                   }}
                 />
                 {error === "password" ? (
-                  <span className="error">* Password cannot be empty</span>
+                  <span className="error" id="scrollIntoView">
+                    * Password cannot be empty
+                  </span>
                 ) : (
                   <span className="error"></span>
                 )}
                 {errorFromFirebse === "auth/user-not-found" ? (
-                  <span className="firebase__error">* User not Registered</span>
+                  <span className="firebase__error" id="scrollIntoView">
+                    * User not Registered
+                  </span>
                 ) : errorFromFirebse.length !== 0 ? (
-                  <span className="firebase__error">
+                  <span className="firebase__error" id="scrollIntoView">
                     * Email / Password is Wrong
                   </span>
                 ) : (
