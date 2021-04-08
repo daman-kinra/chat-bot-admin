@@ -213,6 +213,7 @@ label {
     max-height: 100vh;
     border-radius: 0;
     padding-bottom: 7rem;
+    padding-top: 0rem;
   }
 }
 .error {
