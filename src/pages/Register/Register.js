@@ -159,7 +159,7 @@ function Register() {
               <div className="header">
                 <h2>Register Yourself</h2>
               </div>
-              <form action="">
+              <form action="" className="registration__form">
                 <div className="fullname">
                   <div className="firstName">
                     <label htmlFor="firstName">Firstname:</label>

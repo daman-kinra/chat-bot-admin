@@ -6,3 +6,19 @@
   box-sizing: border-box;
   font-family: "Karla", sans-serif;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  scrollbar-width: none !important;
+}
+html {
+  overflow: -moz-scrollbars-none !important;
+}
+@-moz-document url-prefix() {
+  html,
+  body {
+    overflow: hidden !important;
+  }
+}

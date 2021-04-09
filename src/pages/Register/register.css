@@ -1,9 +1,12 @@
 .registration__box {
-  min-height: 40rem;
+  max-height: 80%;
   width: 60%;
   border: 2px solid pink;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 0.7rem;
+  overflow-y: auto;
+  padding: 4rem 2rem 4rem 2rem;
+  scrollbar-width: none;
 }
 .fullname {
   display: flex;
@@ -104,4 +107,7 @@
   .lastName .input {
     width: 95%;
   }
+}
+.registration__form {
+  padding: 0rem 0rem 4rem 0rem;
 }

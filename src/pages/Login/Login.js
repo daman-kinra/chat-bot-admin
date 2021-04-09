@@ -81,7 +81,7 @@ function Login() {
           </div>
           <div className="right__container">
             <div className="login__box">
-              <div className="header">
+              <div className="header login__header">
                 <h2>Login to Admin Dashboard</h2>
               </div>
               <form action="">
