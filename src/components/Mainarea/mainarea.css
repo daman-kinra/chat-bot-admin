@@ -1,0 +1,23 @@
+.mainarea {
+  flex: 0.7;
+  background-color: aqua;
+}
+.allques__div {
+  height: calc(100vh - 10vh);
+  width: 100%;
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.question__area {
+  height: 80%;
+  width: 80%;
+  border-radius: 0.7rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-height: 80%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 1rem;
+  border: 2px solid pink;
+}

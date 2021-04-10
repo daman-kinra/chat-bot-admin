@@ -1,0 +1,11 @@
+.header__main {
+  flex: 0.15;
+  background-color: #f2d184;
+}
+.btns button {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.admin__name {
+  text-align: center;
+}
