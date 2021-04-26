@@ -7,6 +7,9 @@ function Mainarea() {
   const [allQues, setAllQues] = useState([]);
   const [askedQues, setAskedques] = useState([]);
   const [showQuesBox, setShowQuesBox] = useState("all");
+  const [newQues, setNewQues] = useState("");
+  const [newAns, setNewAns] = useState("");
+  const [error, setError] = useState("");
   const setQues = (isVissible) => {
     setShowAllQues(isVissible);
   };
@@ -27,12 +30,56 @@ function Mainarea() {
               item.forEach((doc) => {
                 arr.push(doc.data());
               });
-              console.log(arr);
+
               setAskedques(arr);
             });
         }
       });
   }, []);
+
+  const addNewQuestion = (e) => {
+    e.preventDefault();
+    if (newQues === "") {
+      setError("newQues");
+      return;
+    }
+    if (newAns === "") {
+      setError("newAns");
+      return;
+    }
+    const newArr = [...allQues, { Q: newQues, A: newAns }];
+    setAllQues(newArr);
+    app
+      .firestore()
+      .collection("Questions")
+      .doc("Q&A")
+      .set({ data: newArr })
+      .then(() => {
+        // console.log("done");
+        setNewQues("");
+        setNewAns("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const deleteOneQues = (e, pos) => {
+    let tempArr = allQues;
+    delete tempArr[pos];
+    const newArr = tempArr.filter((item) => item !== undefined);
+    setAllQues(newArr);
+    app
+      .firestore()
+      .collection("Questions")
+      .doc("Q&A")
+      .set({ data: newArr })
+      .then(() => {
+        // console.log("done");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="mainarea">
       <Sidebar setQues={setQues} />
@@ -56,21 +103,29 @@ function Mainarea() {
               >
                 ASKED
               </button>
-              <button
+              {/* <button
                 className="login__btn"
                 onClick={() => {
                   setShowQuesBox("com");
                 }}
               >
                 FREQUENTLY ASKED
-              </button>
+              </button> */}
             </div>
             {showQuesBox === "all" ? (
               <div className="allques">
                 {allQues.map((item, pos) => {
                   return (
                     <div className="singleQues" key={pos}>
-                      {item.Q}
+                      <p>{item.Q}</p>
+                      <button
+                        className="delete__btn"
+                        onClick={(e) => {
+                          deleteOneQues(e, pos);
+                        }}
+                      >
+                        Delete
+                      </button>
                     </div>
                   );
                 })}
@@ -83,7 +138,7 @@ function Mainarea() {
                 {askedQues.map((item, pos) => {
                   return (
                     <div className="singleQues" key={pos}>
-                      {item.email}
+                      <h5>By: {item.email}</h5>
                       {item.question.map((ques, pos) => {
                         return <p key={pos}>{ques}</p>;
                       })}
@@ -94,7 +149,7 @@ function Mainarea() {
             ) : (
               ""
             )}
-            {showQuesBox === "com" ? (
+            {/* {showQuesBox === "com" ? (
               <div className="allques">
                 {askedQues.map((item, pos) => {
                   return (
@@ -109,11 +164,58 @@ function Mainarea() {
               </div>
             ) : (
               ""
-            )}
+            )} */}
           </div>
         </div>
       ) : (
-        <div>Add Ques</div>
+        <div className="allques__div">
+          <div className="login__box addQues__div">
+            <form action="">
+              <label htmlFor="email">Question:</label>
+              <input
+                type="text"
+                className="input"
+                placeholder="Question"
+                id="email"
+                value={newQues}
+                onChange={(e) => {
+                  setError("");
+                  setNewQues(e.target.value);
+                }}
+              />
+              {error !== "newQues" ? (
+                <span className="error"></span>
+              ) : (
+                <span className="error" id="scrollIntoView">
+                  * Enter question first
+                </span>
+              )}
+
+              <label htmlFor="pass">Answer:</label>
+              <input
+                type="text"
+                className="input"
+                placeholder="Answer"
+                id="pass"
+                value={newAns}
+                onChange={(e) => {
+                  setNewAns(e.target.value);
+                  setError("");
+                }}
+              />
+              {error !== "newAns" ? (
+                <span className="error"></span>
+              ) : (
+                <span className="error" id="scrollIntoView">
+                  * Enter answer first
+                </span>
+              )}
+              <button className="login__btn" onClick={addNewQuestion}>
+                ADD
+              </button>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

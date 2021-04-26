@@ -21,3 +21,35 @@
   padding: 1rem;
   border: 2px solid pink;
 }
+.asked__toggle {
+  display: flex;
+  justify-content: space-around;
+}
+.allques {
+  max-height: calc(100% - 50px);
+  overflow-y: auto;
+  padding-top: 1rem;
+}
+.singleQues {
+  width: 90%;
+  padding: 1rem;
+  background-color: #ccc;
+  margin: 0.5rem;
+  border-radius: 0.7rem;
+}
+.delete__btn {
+  padding: 0.5rem;
+  border: 0;
+  outline: 0;
+  margin-left: 0rem;
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 991px) {
+  .mainarea {
+    flex: 1;
+  }
+  .addQues__div {
+    padding-top: 25vh;
+  }
+}
