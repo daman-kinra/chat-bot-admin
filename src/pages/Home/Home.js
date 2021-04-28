@@ -28,7 +28,7 @@ function Home(props) {
         showProfile={showProfile}
         setMainarea={setMainarea}
       ></Navbar>
-      {showProfile ? <Profile /> : <Mainarea />}
+      {showProfile ? <Profile user={props.user} /> : <Mainarea />}
     </div>
   );
 }

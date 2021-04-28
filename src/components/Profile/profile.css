@@ -1,0 +1,12 @@
+.profile__area {
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  padding: 5rem;
+  align-items: center;
+  justify-content: space-around;
+}
+.profile__area img {
+  border-radius: 50%;
+  max-width: 40%;
+}
